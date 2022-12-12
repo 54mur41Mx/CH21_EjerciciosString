@@ -24,3 +24,20 @@ for (let index = 0; index < nombre.length; index++) {
 }
 
 console.log(letra, contaFinal);
+
+///////////////////////////////////////////////////////////////////
+
+
+function nombre2(nombre2){
+
+
+let reversa="";
+
+    for (let index = nombre2.length; index > -1; index--){
+        console.log(nombre2.charAt(index));
+
+        reversa= reversa + nombre2.charAt(index);
+   
+    }
+    return reversa;
+}
