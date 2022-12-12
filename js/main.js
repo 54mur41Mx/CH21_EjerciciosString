@@ -1,56 +1,33 @@
 //Aqui se escribirá el javascript.
 
-let nombre = "Abraham"
+let btnEnviar = document.getElementById("btnEnviar");
 
-nombre = nombre.toUpperCase();
+btnEnviar.addEventListener("click", function(event){
+    event.preventDefault();
 
-let letra="";
 
-let contaFinal=0;
+    let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let exampleFormControlInput1 = document.getElementById("exampleFormControlInput1");
+    let exampleFormControlTextarea1 = document.getElementById("exampleFormControlTextarea1");
+    let alertError = document.getElementById("alertError");
+    exampleFormControlTextarea1.value = exampleFormControlTextarea1.value.trim();
 
-for (let index = 0; index < nombre.length; index++) {
-    console.log(nombre.charAt(index));
-    let conTemp=0;
-    for (let cont = 0; cont < nombre.length; cont++) {
-        if(nombre.charAt(index) == nombre.charAt(cont))
-            conTemp++
+    alertError.style.display="none";
+    alertError.innerHTML="";
+
+    console.log(exampleFormControlTextarea1.value.length);
+    console.log("[" + exampleFormControlTextarea1.value.replaceAll(" " , "") + "]")
+
+    if(exampleFormControlTextarea1.value.trim().replaceAll(" " , "").length < 20){
+        alertError.innerHTML = "El mensaje dee contener 20 caracteres o más";
+        alertError.style.display="block";
+        exampleFormControlTextarea1.focus();
+        exampleFormControlTextarea1.select();
     }
 
-    if (conTemp>contaFinal){
-        contaFinal=conTemp
-        letra = nombre.charAt(index);
+    if(exampleFormControlInput1.value.match(emailRegex)== null){
+        alertError.style.display="block";
+        alertError.innerHTML += "<br/> El correo electrónico no es válido"
     }
-    
-}
 
-console.log(letra, contaFinal);
-
-///////////////////////////////////////////////////////////////////
-
-
-function reves(nombre2){
-
-
-    let reversa="";
-
-        for (let index = nombre2.length; index >=0; index--){
-            console.log(nombre2.charAt(index));
-
-            reversa= reversa + nombre2.charAt(index);
-    
-        }
-        return reversa;
-}
-
-
-function palindromo(frase){
-
-   let bandera = false;
-    
-    frase=frase.toLowerCase();
-    frase=frase.split(" ").join("");
-    
-    if(frase == reves(frase))
-    bandera = true;
-    return bandera;
-}
+});
