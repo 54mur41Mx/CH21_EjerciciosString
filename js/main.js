@@ -28,16 +28,29 @@ console.log(letra, contaFinal);
 ///////////////////////////////////////////////////////////////////
 
 
-function nombre2(nombre2){
+function reves(nombre2){
 
 
-let reversa="";
+    let reversa="";
 
-    for (let index = nombre2.length; index > -1; index--){
-        console.log(nombre2.charAt(index));
+        for (let index = nombre2.length; index >=0; index--){
+            console.log(nombre2.charAt(index));
 
-        reversa= reversa + nombre2.charAt(index);
-   
-    }
-    return reversa;
+            reversa= reversa + nombre2.charAt(index);
+    
+        }
+        return reversa;
+}
+
+
+function palindromo(frase){
+
+   let bandera = false;
+    
+    frase=frase.toLowerCase();
+    frase=frase.split(" ").join("");
+    
+    if(frase == reves(frase))
+    bandera = true;
+    return bandera;
 }
